@@ -24,6 +24,13 @@ btc_returns = btc_df[['Date', 'btc_returns']] # Select the only 2 columns we'll 
 spy = yf.Ticker("SPY")
 spy_df = spy.history(period = 'max')
 
+# Transform S&P500 data into an analysable form
+spy_df = spy_df.reset_index() # In the original dataframe, the date is part of the index which means we can't select it later. 
+#reset_index shifts the date into a normal column
+spy_df['Date'] = spy_df['Date'].apply(lambda x: x.strftime('%Y-%m-%d')) 
+spy_df['spy_returns'] = ((spy_df['Close']/spy_df['Open']) - 1) * 100
+spy_returns = spy_df[['Date', 'spy_returns']]
+
 # Pull gold price history
 spy = yf.Ticker("GC=F")
 spy_df = spy.history(period = 'max')
