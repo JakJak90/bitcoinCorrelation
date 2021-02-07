@@ -12,3 +12,7 @@ btc_url = "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&
 btc_data = urlopen(btc_url).read() # Open the API contents 
 btc_json = json.loads(btc_data) # Output response in JSON format
 
+# Pull S&P500 price history
+spy = yf.Ticker("SPY")
+spy_df = spy.history(period = 'max')
+
