@@ -8,11 +8,15 @@ import yfinance as yf # Yahoo Finance
 from datetime import datetime 
 
 # Pull bitcoin proce history
-btc_url = "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=2000&api_key=d1875a3943f6f2ee83a90ac2e05d5fa018618e00724e9018f9bd08c0ac932cc6"
+btc_url = "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=2000&api_key=adc77c4c1378ed8f7f43fef0b282d6773a735f98fed387e2311b5534aaa5bdfb"
 btc_data = urlopen(btc_url).read() # Open the API contents 
 btc_json = json.loads(btc_data) # Output response in JSON format
 
 # Pull S&P500 price history
 spy = yf.Ticker("SPY")
+spy_df = spy.history(period = 'max')
+
+# Pull gold price history
+spy = yf.Ticker("GC=F")
 spy_df = spy.history(period = 'max')
 
