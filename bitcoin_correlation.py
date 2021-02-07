@@ -35,3 +35,8 @@ spy_returns = spy_df[['Date', 'spy_returns']]
 spy = yf.Ticker("GC=F")
 spy_df = spy.history(period = 'max')
 
+# Transform gold data into an analysable form
+gold_df = gold_df.reset_index()
+gold_df['Date'] = gold_df['Date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+gold_df['gold_returns'] = ((gold_df['Close']/gold_df['Open']) - 1) * 100 
+gold_returns = gold_df[['Date', 'gold_returns']]
