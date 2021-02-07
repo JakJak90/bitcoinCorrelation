@@ -32,8 +32,8 @@ spy_df['spy_returns'] = ((spy_df['Close']/spy_df['Open']) - 1) * 100
 spy_returns = spy_df[['Date', 'spy_returns']]
 
 # Pull gold price history
-spy = yf.Ticker("GC=F")
-spy_df = spy.history(period = 'max')
+gold = yf.Ticker("GC=F")
+gold_df = spy.history(period = 'max')
 
 # Transform gold data into an analysable form
 gold_df = gold_df.reset_index()
